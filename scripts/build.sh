@@ -17,4 +17,5 @@
 # -------------------------------------------------------------------------
 cd ../pkg/ && CGO_ENABLED=0 GOARCH=amd64
 #GOOS=darwin go build -o xagent
-GOOS=windows go build -o xagent.exe
+GOOS=windows go build -o ../assets/xagent.exe
+cp start.sh ../assets/

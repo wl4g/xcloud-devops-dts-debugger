@@ -21,4 +21,5 @@ rem SET GOOS=darwin
 rem SET GOOS=linux
 SET GOOS=windows
 SET GOARCH=amd64
-go build -o xagent.exe ..\pkg\
+go build -o ..\assets\xagent.exe ..\pkg\
+copy start.bat ..\assets\

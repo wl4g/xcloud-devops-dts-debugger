@@ -16,12 +16,10 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 	"log"
 	"net"
-	"net/url"
 	"regexp"
 	"strings"
 )
@@ -66,40 +64,36 @@ func (_self *HttpAgent) handleClientRequest(client net.Conn) {
 	defer client.Close()
 
 	// Read client request data.
-	var reqData [1024]byte
-	n, err := client.Read(reqData[:])
+	var rawReqData [1024]byte
+	n, err := client.Read(rawReqData[:])
 	if err != nil {
 		log.Printf("Failed to handling client request. %v", err)
 		return
 	}
 
 	// Parse http request.
-	var method, host, address string
-	fmt.Sscanf(string(reqData[:bytes.IndexByte(reqData[:], '\n')]), "%s%s", &method, &host)
-	reqUrl, err := url.Parse(host)
-	if err != nil {
-		log.Println(err)
-		return
-	}
+	var method, reqRawURI, address string
+	rawReqDataText := strings.Split(string(rawReqData[:]), "\n")
 
+	// Extract URI.(e.g. GET /app/xx?id=1 HTTP/1.1)
+	rawReqLocation := rawReqDataText[0]
+	fmt.Sscanf(rawReqLocation, "%s%s", &method, &reqRawURI)
+	// Extract Host.(e.g. my.domain.com)
+	rawReqHost := strings.TrimSpace(strings.Split(rawReqDataText[1], ":")[1])
 	// Extract request real backend address(host:port)
-	if reqUrl.Opaque == "443" { // https ?
-		address = reqUrl.Scheme + ":443"
-	} else { // http ?
-		if strings.Index(reqUrl.Host, ":") == -1 { // Use default:80 ?
-			address = reqUrl.Host + ":80"
-		} else {
-			address = reqUrl.Host
-		}
+	if strings.Index(rawReqHost, ":") == -1 { // Use default:80 ?
+		address = rawReqHost + ":80"
+	} else {
+		address = rawReqHost
 	}
 
 	// Determine configured backend address(host:port).
-	proxyAddress := _self.determineBackendAddress(reqUrl.RequestURI())
-	if len(address) > 0 {
-		address = proxyAddress // Use configured proxy backend server.
+	realBackendAddress := _self.determineBackendAddress(rawReqHost, reqRawURI)
+	if len(realBackendAddress) > 0 {
+		address = realBackendAddress // Use configured proxy backend server.
 	} else {
 		log.Printf("Forwarded original request URI, not matched to the configured forwarding routing. <%s>",
-			reqUrl.RequestURI())
+			reqRawURI)
 	}
 
 	// Connect to backend already forwarding.
@@ -111,7 +105,7 @@ func (_self *HttpAgent) handleClientRequest(client net.Conn) {
 	if method == "CONNECT" {
 		fmt.Fprint(client, "HTTP/1.1 200 Connection established\r\n\r\n")
 	} else {
-		backendServer.Write(reqData[:n])
+		backendServer.Write(rawReqData[:n])
 	}
 
 	// Forwarding(利用HTTP／1.1协议中的CONNECT方法建立起来的隧道连接，实现的HTTP Proxy。这种代理的好处就
@@ -124,11 +118,17 @@ func (_self *HttpAgent) handleClientRequest(client net.Conn) {
 /**
  * Determine pass to backend address by request URI.
  */
-func (_self *HttpAgent) determineBackendAddress(requestUri string) string {
+func (_self *HttpAgent) determineBackendAddress(requestHost string, requestURI string) string {
 	for _, p := range _self.Proxy {
-		reg := regexp.MustCompile(p.Location)
-		if reg.MatchString(requestUri) {
-			return p.Pass
+		if strings.EqualFold(p.Expose, requestHost) {
+			reverse := strings.HasPrefix(p.Location, "!") // Is it reversed?
+			regexLocation := strings.Replace(p.Location, "!", "", -1)
+			uriMatched := regexp.MustCompile(regexLocation).MatchString(requestURI)
+			if reverse && !uriMatched {
+				return p.Pass
+			} else if !reverse && uriMatched {
+				return p.Pass
+			}
 		}
 	}
 	return ""

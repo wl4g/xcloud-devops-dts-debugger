@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cec71dd-e4cf-4700-8ecf-3861b3f4ef4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/hosts/accessor.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/hosts/accessor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/http_agent.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/http_agent.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/xagent.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/xagent.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,16 +13,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pkg/hosts/accessor.go">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/xagent.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+            <state relative-caret-position="38">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding>
-                <element signature="n#!!block;n#addHostLines#0" />
-                <element signature="n#!!block;n#backupHostsIfNecessary#0" />
-                <element signature="n#!!block;n#Run#0" />
-                <element signature="n#!!block;n#isBackupHosts#0" />
+                <element signature="e#11#127#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pkg/http_agent.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="124" column="68" selection-start-line="124" selection-start-column="68" selection-end-line="124" selection-end-column="68" />
+              <folding>
+                <element signature="n#!!block;n#ListenServer#0" />
               </folding>
             </state>
           </provider>
@@ -34,7 +42,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>\n</find>
+      <find>!</find>
+      <find>!:</find>
     </findStrings>
+    <replaceStrings>
+      <replace>!:</replace>
+      <replace>!</replace>
+    </replaceStrings>
   </component>
   <component name="GOROOT" path="D:/soft_install/go1.12.windows" />
   <component name="Git.Settings">
@@ -44,10 +58,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/VERSION" />
+        <option value="$PROJECT_DIR$/pkg/hosts/accessor.go" />
+        <option value="$PROJECT_DIR$/pkg/main.go" />
         <option value="$PROJECT_DIR$/resources/xagent.json" />
         <option value="$PROJECT_DIR$/pkg/http_agent.go" />
-        <option value="$PROJECT_DIR$/pkg/main.go" />
-        <option value="$PROJECT_DIR$/pkg/hosts/accessor.go" />
       </list>
     </option>
   </component>
@@ -77,12 +91,6 @@
               <item name="super-devops-tool-debug-agent" type="b2602c69:ProjectViewProjectNode" />
               <item name="super-devops-tool-debug-agent" type="462c0819:PsiDirectoryNode" />
               <item name="pkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="super-devops-tool-debug-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="super-devops-tool-debug-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="pkg" type="462c0819:PsiDirectoryNode" />
-              <item name="hosts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -140,7 +148,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2497979" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2497979" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3285968" />
@@ -149,9 +157,9 @@
       <window_info anchor="bottom" id="Messages" order="4" weight="0.3285968" />
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.3285968" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.45115453" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.39964476" />
+      <window_info active="true" anchor="bottom" id="Debug" order="9" visible="true" weight="0.3374778" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
@@ -172,6 +180,24 @@
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://athens.azurefd.net</proxy>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/pkg/http_agent.go</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/pkg/http_agent.go</url>
+          <line>126</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/go.mod">
@@ -214,47 +240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/xagent.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pkg/http_agent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="n#!!block;n#ListenServer#0" />
-            <element signature="e#1037#1099#0" />
-            <element signature="e#1205#1226#0" />
-            <element signature="e#1233#1344#0" />
-            <element signature="e#1279#1302#0" />
-            <element signature="n#!!block;n#handleClientRequest#0" />
-            <element signature="e#1475#1545#0" />
-            <element signature="e#1673#1745#0" />
-            <element signature="e#1687#1733#0" />
-            <element signature="e#1816#1893#0" />
-            <element signature="e#1941#1973#0" />
-            <element signature="e#2054#2104#0" />
-            <element signature="e#2110#2262#0" />
-            <element signature="e#2165#2223#0" />
-            <element signature="e#2229#2259#0" />
-            <element signature="e#2406#2475#0" />
-            <element signature="e#2481#2612#0" />
-            <element signature="e#2495#2609#0" />
-            <element signature="e#2720#2752#0" />
-            <element signature="e#2777#2849#0" />
-            <element signature="e#2855#2894#0" />
-            <element signature="e#2897#2966#0" />
-            <element signature="e#3153#3161#0" />
-            <element signature="n#!!block;n#determineBackendAddress#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pkg/hostspath/path_windows.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -269,12 +254,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/hosts/accessor.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="108" column="19" lean-forward="true" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!block;n#addHostLines#0" />
+            <element signature="n#!!block;n#backupHostsIfNecessary#0" />
+            <element signature="n#!!block;n#Run#0" />
+            <element signature="n#!!block;n#isBackupHosts#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/soft_install/go1.12.windows/src/bytes/bytes.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="100" column="23" lean-forward="true" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/soft_install/go1.12.windows/src/fmt/scan.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="114" column="1" lean-forward="true" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pkg/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="183">
+          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
           <folding>
-            <element signature="e#977#1050#0" />
             <element signature="n#!!block;n#init#0" />
             <element signature="e#1360#1444#0" />
             <element signature="e#1545#1642#0" />
@@ -283,15 +294,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pkg/hosts/accessor.go">
+    <entry file="file://$PROJECT_DIR$/resources/xagent.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+        <state relative-caret-position="38">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
           <folding>
-            <element signature="n#!!block;n#addHostLines#0" />
-            <element signature="n#!!block;n#backupHostsIfNecessary#0" />
-            <element signature="n#!!block;n#Run#0" />
-            <element signature="n#!!block;n#isBackupHosts#0" />
+            <element signature="e#11#127#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/soft_install/go1.12.windows/src/strings/strings.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="851" lean-forward="true" selection-start-line="851" selection-end-line="851" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/http_agent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="124" column="68" selection-start-line="124" selection-start-column="68" selection-end-line="124" selection-end-column="68" />
+          <folding>
+            <element signature="n#!!block;n#ListenServer#0" />
           </folding>
         </state>
       </provider>

@@ -1,49 +1,49 @@
 {
   "tcp": [
     {
-      "listen": "localhost:9897",
+      "listen": ":9897",
       "expose": "mqtt.anjiancloud.alpha",
       "pass": "10.0.0.163:1883"
     }
   ],
   "http": [
     {
-      "listen": "localhost:58080",
+      "listen": ":80",
       "proxy": [
         {
           "expose": "ems.anjiancloud.alpha",
           "pass": "localhost:8091",
-          "location": "^/ems/"
+          "location": "!^/ems/"
         },
         {
           "expose": "portal.anjiancloud.alpha",
           "pass": "localhost:9528",
-          "location": "^/portal/"
+          "location": "!^/portal/"
         },
         {
           "expose": "mp.anjiancloud.alpha",
           "pass": "localhost:8090",
-          "location": "^/mp/"
+          "location": "!^/mp/"
         },
         {
           "expose": "trends.anjiancloud.alpha",
           "pass": "localhost:8091",
-          "location": "^/trends/"
+          "location": "!^/trends/"
         },
         {
           "expose": "iiot.anjiancloud.alpha",
           "pass": "localhost:9528",
-          "location": "^/iiot/"
+          "location": "!^/iiot/"
         },
         {
           "expose": "datav.anjiancloud.alpha",
           "pass": "localhost:8090",
-          "location": "^/datav/"
+          "location": "!^/datav/"
         },
         {
           "expose": "m.anjiancloud.alpha",
           "pass": "localhost:4200",
-          "location": "^/mobile/"
+          "location": "!^/mobile/"
         }
       ]
     }

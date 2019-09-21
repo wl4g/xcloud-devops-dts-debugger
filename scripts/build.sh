@@ -17,4 +17,4 @@
 # -------------------------------------------------------------------------
 cd ../pkg/ && CGO_ENABLED=0 GOARCH=amd64
 #GOOS=darwin go build -o xagent
-GOOS=windows go build -o xagent
+GOOS=windows go build -o xagent.exe

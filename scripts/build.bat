@@ -21,4 +21,4 @@ rem SET GOOS=darwin
 rem SET GOOS=linux
 SET GOOS=windows
 SET GOARCH=amd64
-go build -o xagent ..\pkg\
+go build -o xagent.exe ..\pkg\

@@ -16,10 +16,10 @@
 package main
 
 import (
-	hosts2 "XAgent/pkg/hosts"
 	"encoding/json"
 	"flag"
 	"fmt"
+	hosts2 "github.com/wl4g/super-devops-tool-debug-agent/pkg/hosts"
 	"io/ioutil"
 	"log"
 	"time"
@@ -36,14 +36,8 @@ _/\_\|_|_|\_. |\___.|_|_| |_|
 )
 
 type Config struct {
-	Tcp  []TcpAgentConfig `json:"tcp"`
-	Http []HttpAgent      `json:"http"`
-}
-
-type TcpAgentConfig struct {
-	Listen string `json:"listen"`
-	Expose string `json:"expose"`
-	Pass   string `json:"pass"`
+	Tcp  []TcpAgent  `json:"tcp"`
+	Http []HttpAgent `json:"http"`
 }
 
 var (
@@ -79,27 +73,19 @@ func main() {
 
 	// Starting TCP channel port forwarding.
 	if config.Tcp != nil && len(config.Tcp) > 0 {
-		for _, c := range config.Tcp {
-			addLocalhostDomain(c.Expose) // e.g. Add 127.0.0.1 => my.domain.com
-			agent := &TcpAgent{
-				ServerEndpoint:  c.Listen,
-				BackendEndpoint: c.Pass,
-			}
-			agent.listenServer()
+		for _, t := range config.Tcp {
+			addLocalhostDomain(t.Expose) // e.g. Add 127.0.0.1 => my.domain.com
+			t.listenServer()
 		}
 	}
 
 	// Starting HTTP channel route forwarding.
 	if config.Http != nil && len(config.Http) > 0 {
-		for _, c := range config.Http {
-			addLocalhostDomain(c.Expose) // e.g. Add 127.0.0.1 => my.domain.com
-			agent := &HttpAgent{
-				Listen: c.Listen,
-				Proxy: &HttpProxyTable{
-					Expose: c.E
-				}
+		for _, h := range config.Http {
+			h.ListenServer()
+			for _, p := range h.Proxy {
+				addLocalhostDomain(p.Expose) // e.g. Add 127.0.0.1 => my.domain.com
 			}
-			agent.ListenServer()
 		}
 	}
 

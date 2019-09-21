@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cec71dd-e4cf-4700-8ecf-3861b3f4ef4c" name="Default Changelist" comment="" />
+    <list default="true" id="4cec71dd-e4cf-4700-8ecf-3861b3f4ef4c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/main.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,42 +16,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pkg/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="270">
+              <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
               <folding>
-                <element signature="n#!!doc" />
                 <element signature="e#775#938#1" />
-                <element signature="e#954#1037#0" />
-                <element signature="e#1059#1160#0" />
                 <element signature="n#!!block;n#init#0" />
-                <element signature="e#1361#1410#0" />
-                <element signature="e#1470#1554#0" />
-                <element signature="e#1484#1529#0" />
-                <element signature="e#1655#1752#0" />
-                <element signature="e#1669#1749#0" />
-                <element signature="n#!!block;n#main#1" />
-                <element signature="e#1966#2013#0" />
-                <element signature="e#2120#2344#0" />
-                <element signature="e#2153#2341#0" />
-                <element signature="e#2247#2313#0" />
-                <element signature="e#2437#2676#0" />
-                <element signature="e#2471#2673#0" />
-                <element signature="e#2566#2645#0" />
-                <element signature="n#!!block;n#addLocalhostDomain#0" />
-                <element signature="e#2743#2811#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/go.mod">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -53,11 +32,26 @@
     </leaf>
   </component>
   <component name="GOROOT" path="D:/soft_install/go1.12.windows" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pkg/http_agent.go" />
+        <option value="$PROJECT_DIR$/pkg/main.go" />
+        <option value="$PROJECT_DIR$/VERSION" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="15" />
     <option name="y" value="30" />
     <option name="width" value="1890" />
     <option name="height" value="960" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -72,11 +66,6 @@
               <item name="super-devops-tool-debug-agent" type="b2602c69:ProjectViewProjectNode" />
               <item name="super-devops-tool-debug-agent" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="super-devops-tool-debug-agent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="super-devops-tool-debug-agent" type="462c0819:PsiDirectoryNode" />
-              <item name="pkg" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -84,6 +73,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="GO_FMT" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
@@ -92,6 +83,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\go-workspace\src\super-devops-tool-debug-agent" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -110,16 +106,16 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2497979" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497979" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Version Control" weight="0.3285968" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3285968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -138,31 +134,43 @@
     <proxy>https://athens.azurefd.net</proxy>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pkg/main.go">
+    <entry file="file://$PROJECT_DIR$/pkg/tcp_agent.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="271">
+          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#775#938#1" />
-            <element signature="e#954#1037#0" />
-            <element signature="e#1059#1160#0" />
-            <element signature="n#!!block;n#init#0" />
-            <element signature="e#1361#1410#0" />
-            <element signature="e#1470#1554#0" />
-            <element signature="e#1484#1529#0" />
-            <element signature="e#1655#1752#0" />
-            <element signature="e#1669#1749#0" />
-            <element signature="n#!!block;n#main#1" />
-            <element signature="e#1966#2013#0" />
-            <element signature="e#2120#2344#0" />
-            <element signature="e#2153#2341#0" />
-            <element signature="e#2247#2313#0" />
-            <element signature="e#2437#2676#0" />
-            <element signature="e#2471#2673#0" />
-            <element signature="e#2566#2645#0" />
-            <element signature="n#!!block;n#addLocalhostDomain#0" />
-            <element signature="e#2743#2811#0" />
+            <element signature="n#!!block;n#listenServer#0" />
+            <element signature="e#874#935#0" />
+            <element signature="e#996#1028#0" />
+            <element signature="e#1053#1242#0" />
+            <element signature="e#1099#1151#0" />
+            <element signature="n#!!block;n#handleClientRequest#0" />
+            <element signature="e#1332#1392#0" />
+            <element signature="e#1472#1530#0" />
+            <element signature="e#1621#1726#0" />
+            <element signature="e#1809#1914#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/http_agent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#handleClientRequest#0" />
+            <element signature="e#1475#1545#0" />
+            <element signature="e#1673#1745#0" />
+            <element signature="e#1941#1973#0" />
+            <element signature="e#2054#2104#0" />
+            <element signature="e#2110#2262#0" />
+            <element signature="e#2165#2223#0" />
+            <element signature="e#2229#2259#0" />
+            <element signature="e#2406#2475#0" />
+            <element signature="e#2481#2612#0" />
+            <element signature="e#2720#2752#0" />
+            <element signature="e#2777#2849#0" />
+            <element signature="e#2855#2894#0" />
           </folding>
         </state>
       </provider>
@@ -171,6 +179,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-242">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VERSION">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding>
+            <element signature="e#775#938#1" />
+            <element signature="n#!!block;n#init#0" />
+          </folding>
         </state>
       </provider>
     </entry>

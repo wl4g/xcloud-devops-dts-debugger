@@ -19,3 +19,4 @@ cd ../pkg/ && CGO_ENABLED=0 GOARCH=amd64
 #GOOS=darwin go build -o xagent
 GOOS=windows go build -o ../assets/xagent.exe
 cp start.sh ../assets/
+cp xagent.json ../assets/

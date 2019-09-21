@@ -23,3 +23,4 @@ SET GOOS=windows
 SET GOARCH=amd64
 go build -o ..\assets\xagent.exe ..\pkg\
 copy start.bat ..\assets\
+copy xagent.json ..\assets\

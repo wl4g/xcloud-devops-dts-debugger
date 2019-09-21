@@ -92,7 +92,7 @@ func (_self *HttpAgent) handleClientRequest(client net.Conn) {
 	if len(realBackendAddress) > 0 {
 		address = realBackendAddress // Use configured proxy backend server.
 	} else {
-		log.Printf("Forwarded original request URI, not matched to the configured forwarding routing. <%s>",
+		log.Printf("Forwarded original request URI. => %s",
 			reqRawURI)
 	}
 

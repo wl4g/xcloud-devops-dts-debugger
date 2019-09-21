@@ -70,25 +70,30 @@ func main() {
 	fmt.Printf("\nauthors: <wanglsir@gmail.com, 983708408@qq.com>")
 	fmt.Printf("\ntime: %s", time.Now().Format(time.RFC3339))
 	fmt.Printf("\n")
+	time.Sleep(time.Millisecond * 200)
 
-	// Starting TCP channel port forwarding.
+	// TCP channel forwarding.
 	if config.Tcp != nil && len(config.Tcp) > 0 {
+		log.Printf("Starting TCP channel port forwarding... %s", config.Tcp)
 		for _, t := range config.Tcp {
 			addLocalhostDomain(t.Expose) // e.g. Add 127.0.0.1 => my.domain.com
-			t.listenServer()
+			go t.listenServer()
 		}
 	}
 
-	// Starting HTTP channel route forwarding.
+	// HTTP channel forwarding.
 	if config.Http != nil && len(config.Http) > 0 {
+		log.Printf("Starting TCP channel port forwarding... %s", config.Http)
 		for _, h := range config.Http {
-			h.ListenServer()
+			go h.ListenServer()
 			for _, p := range h.Proxy {
 				addLocalhostDomain(p.Expose) // e.g. Add 127.0.0.1 => my.domain.com
 			}
 		}
 	}
 
+	// Block and wait until you hear the exit signal to complete restoring the hosts file.
+	select {}
 }
 
 func addLocalhostDomain(domain string) {

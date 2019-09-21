@@ -16,7 +16,6 @@
 package hosts
 
 import (
-	"XAgent/pkg/hostspath"
 	"bufio"
 	"fmt"
 	"io"
@@ -24,12 +23,16 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"super-devops-tool-debug-agent/pkg/hostspath"
 	"syscall"
 )
 
 const (
-	annotation     = "# --- HOST DOMAIN FOR TEMPORARY PARSING ---"
-	backupHostPath = hostspath.HostsPath + "bak"
+	backupHostPath = hostspath.HostsPath + "_bak"
+)
+
+var (
+	_watchExiting = false
 )
 
 type HostAccessor struct {
@@ -41,19 +44,17 @@ func (_self *HostAccessor) addHostLines() error {
 		log.Printf("Failed to add hosts, hosts lines is null.")
 		return nil
 	}
-	log.Printf("\nAdd hosts line to <%s>", hostspath.HostsPath)
+	//log.Printf("Add hosts line to <%s>", hostspath.HostsPath)
 
 	f, err := os.OpenFile(hostspath.HostsPath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
-		log.Printf("Open host file error: %v\n", err)
+		log.Printf("Open host file error: %v", err)
 		return err
 	}
 	defer f.Close()
 
 	w := bufio.NewWriter(f)
-	_, _ = fmt.Fprintln(w)             // New empty line.
-	_, _ = fmt.Fprintln(w, annotation) // Separation
-
+	_, _ = fmt.Fprintln(w) // New empty line.
 	for k, v := range _self.HostLines {
 		line := fmt.Sprintf("%s\t\t%s", k, strings.Join(v, "\t\t"))
 		fmt.Fprintln(w, line)
@@ -64,10 +65,10 @@ func (_self *HostAccessor) addHostLines() error {
 func (_self *HostAccessor) backupHostsIfNecessary() bool {
 	// Check if you have backed up.
 	if isBackupHosts() {
-		log.Printf("\nAlready backup hosts file: %s", backupHostPath)
+		//log.Printf("Already backup hosts file: %s", backupHostPath)
 		return false
 	}
-	log.Printf("\nBackuping hosts from: %s => %s", hostspath.HostsPath, backupHostPath)
+	//log.Printf("Backuping hosts %s => %s", hostspath.HostsPath, backupHostPath)
 
 	sourceFile, err := os.Open(hostspath.HostsPath)
 	//养成好习惯。操作文件时候记得添加 defer 关闭文件资源代码
@@ -96,16 +97,17 @@ func (_self *HostAccessor) backupHostsIfNecessary() bool {
 
 func (_self *HostAccessor) watchHandleExitingAndReset() {
 	// Check if you have backed up.
-	if isBackupHosts() {
-		log.Printf("\nAlready started watch exiting handler.")
+	if _watchExiting {
+		//log.Printf("Already started watch exiting handler.")
 		return
 	}
+	_watchExiting = true
 
 	c := make(chan os.Signal, 2)
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
 	go func() {
 		<-c // 阻塞等待
-		fmt.Printf("\nReset origin hosts %s \t=> %s", backupHostPath, hostspath.HostsPath)
+		log.Printf("Recovery origin hosts completed.")
 		err := os.Rename(backupHostPath, hostspath.HostsPath)
 		if err != nil {
 			panic(err)
@@ -130,22 +132,3 @@ func isBackupHosts() bool {
 	}
 	return false
 }
-
-// For testing.
-//func main() {
-//	fmt.Printf(BANNER)
-//
-//	hosts := make(map[string][]string)
-//	hosts["127.0.0.1"] = []string{
-//		"anjiancloud.alpha",
-//		"mp.anjiancloud.alpha",
-//		"ems.anjiancloud.alpha",
-//		"portal.anjiancloud.alpha",
-//	}
-//
-//	hp := &HostAccessor{HostLines: hosts}
-//	hp.Run()
-//
-//	// Blocking the main thread to make the listening exit signal valid.
-//	select {}
-//}

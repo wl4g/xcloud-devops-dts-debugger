@@ -19,9 +19,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	hosts2 "github.com/wl4g/super-devops-tool-debug-agent/pkg/hosts"
 	"io/ioutil"
 	"log"
+	hosts2 "super-devops-tool-debug-agent/pkg/hosts"
 	"time"
 )
 

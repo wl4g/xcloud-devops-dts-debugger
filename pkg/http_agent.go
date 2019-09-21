@@ -32,9 +32,10 @@ type HttpAgent struct {
 }
 
 type HttpProxyTable struct {
-	Listen string `json:"listen"`
-	Expose string `json:"expose"`
-	Pass   string `json:"pass"`
+	Listen   string `json:"listen"`
+	Expose   string `json:"expose"`
+	Pass     string `json:"pass"`
+	Location string `json:"location"`
 }
 
 func (_self *HttpAgent) ListenServer() {
@@ -120,7 +121,15 @@ func (_self *HttpAgent) handleClientRequest(client net.Conn) {
 	io.Copy(client, backendServer)
 }
 
+/**
+ * Determine pass to backend address by request URI.
+ */
 func (_self *HttpAgent) determineBackendAddress(requestUri string) string {
-	reg := regexp.MustCompile(_self.Location)
-	return reg.MatchString(requestUri)
+	for _, p := range _self.Proxy {
+		reg := regexp.MustCompile(p.Location)
+		if reg.MatchString(requestUri) {
+			return p.Pass
+		}
+	}
+	return ""
 }

@@ -9,7 +9,7 @@
   "http": [
     {
       "listen": "localhost:58080",
-      "routes": [
+      "proxy": [
         {
           "expose": "ems.anjiancloud.alpha",
           "pass": "localhost:8091",

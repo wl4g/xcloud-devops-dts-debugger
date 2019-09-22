@@ -85,7 +85,7 @@ func main() {
 		for _, t := range config.Tcp {
 			go t.listenServer()
 			addLocalhostDomain(t.Expose) // e.g. Add 127.0.0.1 => my.domain.com
-			log.Printf("TCP forwarding rule created.\t(%s => %s)", t.Expose, t.Pass)
+			log.Printf("TCP forwarding rule created. (%s => %s)", t.Expose, t.Pass)
 		}
 	}
 
@@ -95,7 +95,7 @@ func main() {
 			go h.ListenServer()
 			for _, p := range h.Proxy {
 				addLocalhostDomain(p.Expose) // e.g. Add 127.0.0.1 => my.domain.com
-				log.Printf("Http forwarding rule created.\t(%s [%s] => %s)",
+				log.Printf("Http forwarding rule created. (%s [%s] => %s)",
 					p.Expose, p.Location, p.Pass)
 			}
 		}

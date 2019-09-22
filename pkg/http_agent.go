@@ -41,7 +41,6 @@ func (_self *HttpAgent) ListenServer() {
 		panic("HTTP listen server endpoint must not be empty.")
 	}
 
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	l, err := net.Listen("tcp", _self.Listen)
 	if err != nil {
 		log.Panic(err)

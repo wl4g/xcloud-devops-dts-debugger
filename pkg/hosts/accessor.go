@@ -55,6 +55,7 @@ func (_self *HostAccessor) addHostLines() error {
 
 	w := bufio.NewWriter(f)
 	_, _ = fmt.Fprintln(w) // New empty line.
+
 	for k, v := range _self.HostLines {
 		line := fmt.Sprintf("%s\t\t%s", k, strings.Join(v, "\t\t"))
 		fmt.Fprintln(w, line)
@@ -95,7 +96,7 @@ func (_self *HostAccessor) backupHostsIfNecessary() bool {
 	}
 }
 
-func (_self *HostAccessor) watchHandleExitingAndReset() {
+func (_self *HostAccessor) watchHandleExitingAndResetIfNecessary() {
 	// Check if you have backed up.
 	if _watchExiting {
 		//log.Printf("Already started watch exiting handler.")
@@ -117,7 +118,7 @@ func (_self *HostAccessor) watchHandleExitingAndReset() {
 }
 
 func (_self *HostAccessor) Run() {
-	_self.watchHandleExitingAndReset()
+	_self.watchHandleExitingAndResetIfNecessary()
 	_self.backupHostsIfNecessary()
 	_self.addHostLines()
 }

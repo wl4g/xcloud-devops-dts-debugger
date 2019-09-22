@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"strings"
 	hosts2 "super-devops-tool-debug-agent/pkg/hosts"
 	"time"
 )
@@ -45,12 +46,14 @@ var (
 )
 
 func init() {
-	confPath := ""
+	var confPath, xdebug string
 	// Command config path
 	flag.StringVar(&confPath, "c", "resources/xagent.json", "XAgent config path.")
+	flag.StringVar(&xdebug, "xdebug", "n", "Debugging mode.")
 	flag.Parse()
 	//flag.Usage()
 	log.Printf("Initialize config path for - '%s'\n", confPath)
+
 	confData, err := ioutil.ReadFile(confPath)
 	if err != nil {
 		log.Printf("Read config '%s' error! %s", confPath, err)
@@ -61,6 +64,11 @@ func init() {
 	if err := json.Unmarshal(confData, &config); err != nil || &config == nil {
 		log.Panicf("Failed started XAgent, parse configuration error. config:%v, %v", config, err)
 	}
+
+	// Logger setup.
+	if strings.EqualFold(strings.ToLower(xdebug), "y") {
+		log.SetFlags(log.LstdFlags | log.Lshortfile)
+	}
 }
 
 func main() {
@@ -69,25 +77,26 @@ func main() {
 	fmt.Printf("\nversion: v1.0.0")
 	fmt.Printf("\nauthors: <wanglsir@gmail.com, 983708408@qq.com>")
 	fmt.Printf("\ntime: %s", time.Now().Format(time.RFC3339))
-	fmt.Printf("\n")
+	fmt.Printf("\n\n")
 	time.Sleep(time.Millisecond * 200)
 
 	// TCP channel forwarding.
 	if config.Tcp != nil && len(config.Tcp) > 0 {
-		log.Printf("Starting TCP channel port forwarding... %s", config.Tcp)
 		for _, t := range config.Tcp {
-			addLocalhostDomain(t.Expose) // e.g. Add 127.0.0.1 => my.domain.com
 			go t.listenServer()
+			addLocalhostDomain(t.Expose) // e.g. Add 127.0.0.1 => my.domain.com
+			log.Printf("TCP forwarding rule created.\t(%s => %s)", t.Expose, t.Pass)
 		}
 	}
 
-	// HTTP channel forwarding.
+	// HTTP rule forwarding.
 	if config.Http != nil && len(config.Http) > 0 {
-		log.Printf("Starting TCP channel port forwarding... %s", config.Http)
 		for _, h := range config.Http {
 			go h.ListenServer()
 			for _, p := range h.Proxy {
 				addLocalhostDomain(p.Expose) // e.g. Add 127.0.0.1 => my.domain.com
+				log.Printf("Http forwarding rule created.\t(%s [%s] => %s)",
+					p.Expose, p.Location, p.Pass)
 			}
 		}
 	}
